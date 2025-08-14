@@ -3,7 +3,6 @@ import { BiDotsHorizontalRounded, BiSearch } from "react-icons/bi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../context/Context";
 import type { IContext } from "../interfaces/Context.interface";
-import { TiWeatherCloudy } from "react-icons/ti";
 import hsLogo from "../assets/hs_logo.png";
 
 export default function Header(): ReactNode {
