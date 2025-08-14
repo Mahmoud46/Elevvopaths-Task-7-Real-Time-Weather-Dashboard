@@ -8,10 +8,12 @@ export default function App(): ReactNode {
 	return (
 		<>
 			<Header />
-			<Routes>
-				<Route index element={<Home />} />
-				<Route path="/:city" element={<Dashboard />} />
-			</Routes>
+			<section className="flex flex-col gap-4 text-white px-2 sm:px-8">
+				<Routes>
+					<Route index element={<Home />} />
+					<Route path="/:city" element={<Dashboard />} />
+				</Routes>
+			</section>
 		</>
 	);
 }

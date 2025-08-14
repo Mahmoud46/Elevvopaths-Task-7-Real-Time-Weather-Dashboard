@@ -4,13 +4,14 @@ import { Context } from "../context/Context";
 import { useQuery } from "@tanstack/react-query";
 import { fetchWeatheForecast } from "../utils/FetchWather";
 import loadingIcon from "../assets/spinning-dots.svg";
+import { BiError } from "react-icons/bi";
 
 export default function Forecast() {
 	const { weatherData, forecastData, setForecastData, tempUnit } = useContext(
 		Context
 	) as IContext;
 
-	const { data, isLoading, isError, error } = useQuery({
+	const { data, isLoading, isError } = useQuery({
 		queryKey: ["city", weatherData?.location.name],
 		queryFn: () => fetchWeatheForecast(weatherData?.location.name as string),
 		enabled: !!weatherData?.location.name,
@@ -26,11 +27,22 @@ export default function Forecast() {
 		return (
 			<div className="flex items-center justify-center py-8">
 				<div className="glass rounded-full w-fit">
-					<img src={loadingIcon} className="size-[100px]" />
+					<img src={loadingIcon} className="size-[70px]" />
 				</div>
 			</div>
 		);
-	if (isError) return <p>Error: {error.message}</p>;
+	if (isError)
+		return (
+			<div className="flex items-center justify-center py-8">
+				<div className="glass p-4 flex flex-col gap-1 justify-center items-center rounded-2xl">
+					<BiError className="text-5xl" />
+					<p className="text-sm">Hmm... we couldn’t find that city. </p>
+					<p className="text-sm">
+						Double-check the spelling or try a nearby location.
+					</p>
+				</div>
+			</div>
+		);
 	return (
 		<>
 			{forecastData && (

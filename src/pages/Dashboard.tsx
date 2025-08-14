@@ -8,12 +8,13 @@ import loadingIcon from "../assets/spinning-dots.svg";
 import Forecast from "../components/Forecast";
 import MapFrame from "../components/Map";
 import Current from "../components/Current";
+import { BiError } from "react-icons/bi";
 
 export default function Dashboard(): ReactNode {
 	const { city } = useParams();
 	const { setCities, setWeatherData } = useContext(Context) as IContext;
 
-	const { data, isLoading, isError, error } = useQuery({
+	const { data, isLoading, isError } = useQuery({
 		queryKey: ["city", city],
 		queryFn: () => fetchWeather(city as string),
 		enabled: !!city,
@@ -31,13 +32,22 @@ export default function Dashboard(): ReactNode {
 	if (isLoading)
 		return (
 			<div className="absolute top-[50%] left-[50%] translate-[-50%] glass rounded-full">
-				<img src={loadingIcon} className="size-[100px]" />
+				<img src={loadingIcon} className="size-[70px]" />
 			</div>
 		);
-	if (isError) return <p>Error: {error.message}</p>;
+	if (isError)
+		return (
+			<div className="absolute top-[50%] left-[50%] translate-[-50%] glass p-4 flex flex-col gap-1 justify-center items-center rounded-2xl">
+				<BiError className="text-5xl" />
+				<p className="text-sm">Hmm... we couldn’t find that city. </p>
+				<p className="text-sm">
+					Double-check the spelling or try a nearby location.
+				</p>
+			</div>
+		);
 
 	return (
-		<section className="flex flex-col gap-4 text-white px-2 sm:px-8 ">
+		<>
 			<div className="flex w-full gap-4 flex-wrap">
 				<Current />
 
@@ -47,6 +57,6 @@ export default function Dashboard(): ReactNode {
 
 			{/*  */}
 			<Forecast />
-		</section>
+		</>
 	);
 }

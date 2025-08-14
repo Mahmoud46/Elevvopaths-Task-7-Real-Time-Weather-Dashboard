@@ -57,12 +57,11 @@ export default function Header(): ReactNode {
 							</Link>
 						))}
 					</nav>
-					{cities.length > 3 && (
-						<BiDotsHorizontalRounded
-							className="text-xl cursor-pointer"
-							onClick={() => setIsShow((prev) => !prev)}
-						/>
-					)}
+
+					<BiDotsHorizontalRounded
+						className="text-xl cursor-pointer"
+						onClick={() => setIsShow((prev) => !prev)}
+					/>
 
 					{isShow && (
 						<div
