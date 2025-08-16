@@ -32,7 +32,7 @@ export default function CitiesMenu(): ReactNode {
 				>
 					{cities.map((city, i) => (
 						<Link
-							className="py-1 px-4 hover:text-black hover:border-y-1 hover:border-y-gray-200"
+							className="py-1 px-4 hover:text-black hover:border-y-1 hover:border-y-gray-200 pr-8"
 							to={`/${city}`}
 							key={i}
 							onClick={(e) => {
