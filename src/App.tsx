@@ -3,11 +3,13 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Header from "./components/Header";
+import CitiesMenu from "./components/CitiesMenu";
 
 export default function App(): ReactNode {
 	return (
 		<>
 			<Header />
+			<CitiesMenu />
 			<section className="flex flex-col gap-4 text-white px-2 sm:px-8">
 				<Routes>
 					<Route index element={<Home />} />

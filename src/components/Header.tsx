@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { useContext, useState, type ReactNode } from "react";
 import { BiDotsHorizontalRounded, BiSearch } from "react-icons/bi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../context/Context";
@@ -6,30 +6,16 @@ import type { IContext } from "../interfaces/Context.interface";
 import hsLogo from "../assets/hs_logo.png";
 
 export default function Header(): ReactNode {
-	const { cities } = useContext(Context) as IContext;
+	const { cities, setShowCitiesMenu } = useContext(Context) as IContext;
 	const [searchKeyWord, setSearchKeyWord] = useState<string>("");
 	const navigate = useNavigate();
-	const [isShow, setIsShow] = useState<boolean>(false);
-	const menuRef = useRef<HTMLDivElement | null>(null);
+
 	const location = useLocation();
 	const onSearch = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		navigate(`/${searchKeyWord}`);
 		setSearchKeyWord("");
 	};
-
-	useEffect(() => {
-		function handleClickOutside(e: MouseEvent) {
-			if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-				setIsShow(false);
-			}
-		}
-
-		document.addEventListener("mousedown", handleClickOutside);
-		return () => {
-			document.removeEventListener("mousedown", handleClickOutside);
-		};
-	}, []);
 
 	return (
 		<header className="fixed top-0 w-full px-2 py-4 sm:px-8 z-20">
@@ -60,33 +46,8 @@ export default function Header(): ReactNode {
 
 					<BiDotsHorizontalRounded
 						className="text-xl cursor-pointer"
-						onClick={() => setIsShow((prev) => !prev)}
+						onClick={() => setShowCitiesMenu((prev) => !prev)}
 					/>
-
-					{isShow && (
-						<div
-							className="absolute top-7 flex flex-col right-0 rounded-2xl overflow-hidden glass max-h-[400px]"
-							ref={menuRef}
-						>
-							<div className="overflow-auto max-h-full flex flex-col glass">
-								{cities.map((city, i) => (
-									<Link
-										className="py-1 px-4 hover:text-black"
-										to={`/${city}`}
-										key={i}
-										onClick={(e) => {
-											e.preventDefault();
-											setIsShow(false);
-											navigate(`/${city}`);
-										}}
-									>
-										{" "}
-										{city.charAt(0).toUpperCase() + city.slice(1)}
-									</Link>
-								))}
-							</div>
-						</div>
-					)}
 				</div>
 
 				<form

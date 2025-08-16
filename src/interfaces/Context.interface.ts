@@ -14,4 +14,6 @@ export interface IContext {
 	setForecastData: React.Dispatch<
 		React.SetStateAction<OpenWeatherForecast | null>
 	>;
+	showCitiesMenu: boolean;
+	setShowCitiesMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }

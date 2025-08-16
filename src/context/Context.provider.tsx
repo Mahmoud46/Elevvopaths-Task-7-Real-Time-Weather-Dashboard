@@ -18,6 +18,7 @@ export default function ContextProvider({
 		null
 	);
 	const [cities, setCities] = useState<string[]>(["cairo", "london", "paris"]);
+	const [showCitiesMenu, setShowCitiesMenu] = useState<boolean>(false);
 
 	const toggleUnit = () => {
 		const newTempUnit = tempUnit == "C" ? "F" : "C";
@@ -35,6 +36,8 @@ export default function ContextProvider({
 		toggleUnit,
 		forecastData,
 		setForecastData,
+		showCitiesMenu,
+		setShowCitiesMenu,
 	};
 	return <Context.Provider value={value}>{children}</Context.Provider>;
 }
