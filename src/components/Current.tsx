@@ -8,6 +8,7 @@ import {
 	LuThermometerSun,
 	LuWind,
 } from "react-icons/lu";
+import { WeatherIcon } from "../utils/WeatherIcon";
 
 export default function Current(): ReactNode {
 	const { weatherData, toggleUnit, tempUnit } = useContext(Context) as IContext;
@@ -32,9 +33,12 @@ export default function Current(): ReactNode {
 								).toLocaleDateString("en-US", { weekday: "long" })}
 							</p>
 							<div className="flex sm:hidden">
-								<img
-									src={weatherData?.current.condition.icon}
-									className="size-[100px]"
+								<WeatherIcon
+									description={weatherData?.current.condition.text}
+									time={+weatherData?.location.localtime}
+									sunrise={+weatherData?.forecast.forecastday[0].astro.sunrise}
+									sunset={+weatherData?.forecast.forecastday[0].astro.sunset}
+									className="text-[150px]"
 								/>
 							</div>
 							<h1 className="text-3xl">
@@ -95,9 +99,12 @@ export default function Current(): ReactNode {
 					{/* Right */}
 					<div className="flex flex-col sm:flex-1">
 						<div className="hidden sm:flex justify-center">
-							<img
-								src={weatherData?.current.condition.icon}
-								className="size-[100px]"
+							<WeatherIcon
+								description={weatherData?.current.condition.text}
+								time={+weatherData?.location.localtime}
+								sunrise={+weatherData?.forecast.forecastday[0].astro.sunrise}
+								sunset={+weatherData?.forecast.forecastday[0].astro.sunset}
+								className="text-[150px]"
 							/>
 						</div>
 						<div className="flex justify-center">

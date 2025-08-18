@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchWeatheForecast } from "../utils/FetchWather";
 import loadingIcon from "../assets/spinning-dots.svg";
 import { BiError } from "react-icons/bi";
+import { WeatherIcon } from "../utils/WeatherIcon";
 
 export default function Forecast() {
 	const { weatherData, forecastData, setForecastData, tempUnit } = useContext(
@@ -73,10 +74,10 @@ export default function Forecast() {
 
 							<div className="flex flex-col justify-center items-center">
 								<div>
-									<img
-										src={`https://openweathermap.org/img/wn/${hr.weather[0].icon}@2x.png`}
-										alt=""
-										className="size-[50px]"
+									<WeatherIcon
+										description={hr.weather[0].main}
+										time={hr.dt}
+										className="text-[50px] pt-1"
 									/>
 									<p className="font-semibold">
 										{tempUnit == "C"
