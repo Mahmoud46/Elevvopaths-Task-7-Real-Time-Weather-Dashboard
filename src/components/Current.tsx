@@ -9,6 +9,7 @@ import {
 	LuWind,
 } from "react-icons/lu";
 import { WeatherIcon } from "../utils/WeatherIcon";
+import { WiSunrise, WiSunset } from "react-icons/wi";
 
 export default function Current(): ReactNode {
 	const { weatherData, toggleUnit, tempUnit } = useContext(Context) as IContext;
@@ -36,8 +37,8 @@ export default function Current(): ReactNode {
 								<WeatherIcon
 									description={weatherData?.current.condition.text}
 									time={+weatherData?.location.localtime}
-									sunrise={+weatherData?.forecast.forecastday[0].astro.sunrise}
-									sunset={+weatherData?.forecast.forecastday[0].astro.sunset}
+									sunrise={weatherData?.forecast.forecastday[0].astro.sunrise}
+									sunset={weatherData?.forecast.forecastday[0].astro.sunset}
 									className="text-[150px]"
 								/>
 							</div>
@@ -98,15 +99,38 @@ export default function Current(): ReactNode {
 					</div>
 					{/* Right */}
 					<div className="flex flex-col sm:flex-1">
+						<div className="flex justify-center">
+							<div className="flex items-center gap-2 p-2 ">
+								<WiSunrise size={30} className="text-orange-300" />
+								<div>
+									<p className="text-sm opacity-70">Sunrise</p>
+									<p className="font-medium">
+										{weatherData?.forecast.forecastday[0].astro.sunrise ??
+											"__:__ __"}
+									</p>
+								</div>
+							</div>
+							<div className="flex items-center gap-2 p-2 ">
+								<WiSunset size={30} className="text-red-500" />
+								<div>
+									<p className="text-sm opacity-70">Sunset</p>
+									<p className="font-medium">
+										{weatherData?.forecast.forecastday[0].astro.sunset ??
+											"__:__ __"}
+									</p>
+								</div>
+							</div>
+						</div>
 						<div className="hidden sm:flex justify-center">
 							<WeatherIcon
 								description={weatherData?.current.condition.text}
 								time={+weatherData?.location.localtime}
-								sunrise={+weatherData?.forecast.forecastday[0].astro.sunrise}
-								sunset={+weatherData?.forecast.forecastday[0].astro.sunset}
+								sunrise={weatherData?.forecast.forecastday[0].astro.sunrise}
+								sunset={weatherData?.forecast.forecastday[0].astro.sunset}
 								className="text-[150px]"
 							/>
 						</div>
+
 						<div className="flex justify-center">
 							<div className="flex items-center gap-2 p-4 ">
 								<LuDroplets size={20} className="text-blue-400" />

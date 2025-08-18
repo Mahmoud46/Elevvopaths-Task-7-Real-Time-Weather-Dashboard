@@ -27,7 +27,7 @@ export default function CitiesMenu(): ReactNode {
 		<>
 			{showCitiesMenu && (
 				<div
-					className="fixed glass z-20 top-15 left-[50%] flex flex-col rounded-xl overflow-x-hidden overflow-y-auto max-h-[300px]"
+					className="fixed glass z-20 top-15 left-[50%] translate-x-[-50%] w-[90%] flex flex-col rounded-xl overflow-x-hidden overflow-y-auto max-h-[300px] sm:w-fit"
 					ref={menuRef}
 				>
 					{cities.map((city, i) => (
