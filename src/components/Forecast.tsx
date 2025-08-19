@@ -77,6 +77,8 @@ export default function Forecast() {
 									<WeatherIcon
 										description={hr.weather[0].main}
 										time={hr.dt}
+										sunrise={weatherData?.forecast.forecastday[0].astro.sunrise}
+										sunset={weatherData?.forecast.forecastday[0].astro.sunset}
 										className="text-[50px] pt-1"
 									/>
 									<p className="font-semibold">

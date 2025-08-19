@@ -11,13 +11,13 @@ import {
 	WiThunderstorm,
 	WiFog,
 } from "react-icons/wi";
-import { parseTime } from "./Parse";
+import { parseDateTime, parseTimeForDate } from "./Parse";
 
 type WeatherIconProps = {
 	description: string;
-	time: number;
-	sunrise?: string;
-	sunset?: string;
+	time: number | string; // can be unix or datetime string
+	sunrise?: string; // HH:MM AM/PM
+	sunset?: string; // HH:MM AM/PM
 	className?: string;
 };
 
@@ -31,11 +31,15 @@ export function WeatherIcon({
 	// normalize input
 	const desc = description.toLowerCase().trim();
 
-	const sunriseDate = sunrise ? parseTime(sunrise) : undefined;
-	const sunsetDate = sunset ? parseTime(sunset) : undefined;
+	const timeDate = parseDateTime(time);
+
+	const sunriseDate = sunrise ? parseTimeForDate(timeDate, sunrise) : undefined;
+	const sunsetDate = sunset ? parseTimeForDate(timeDate, sunset) : undefined;
 
 	const isDay =
-		sunriseDate && sunsetDate ? time >= sunriseDate && time < sunsetDate : true;
+		sunriseDate && sunsetDate
+			? timeDate >= sunriseDate && timeDate < sunsetDate
+			: true;
 
 	// ---- CLEAR / SUNNY ----
 	if (desc.includes("clear") || desc.includes("sun")) {

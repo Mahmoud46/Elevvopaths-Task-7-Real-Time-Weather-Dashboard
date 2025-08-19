@@ -36,7 +36,7 @@ export default function Current(): ReactNode {
 							<div className="flex sm:hidden">
 								<WeatherIcon
 									description={weatherData?.current.condition.text}
-									time={+weatherData?.location.localtime}
+									time={weatherData?.location.localtime}
 									sunrise={weatherData?.forecast.forecastday[0].astro.sunrise}
 									sunset={weatherData?.forecast.forecastday[0].astro.sunset}
 									className="text-[150px]"
@@ -124,7 +124,7 @@ export default function Current(): ReactNode {
 						<div className="hidden sm:flex justify-center">
 							<WeatherIcon
 								description={weatherData?.current.condition.text}
-								time={+weatherData?.location.localtime}
+								time={weatherData?.location.localtime}
 								sunrise={weatherData?.forecast.forecastday[0].astro.sunrise}
 								sunset={weatherData?.forecast.forecastday[0].astro.sunset}
 								className="text-[150px]"
