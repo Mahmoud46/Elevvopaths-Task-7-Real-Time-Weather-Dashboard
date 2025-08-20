@@ -12,7 +12,7 @@ export default function Forecast() {
 		Context
 	) as IContext;
 
-	const { data, isLoading, isError } = useQuery({
+	const { data, isLoading, isError, error } = useQuery({
 		queryKey: ["city", weatherData?.location.name],
 		queryFn: () => fetchWeatheForecast(weatherData?.location.name as string),
 		enabled: !!weatherData?.location.name,
@@ -37,10 +37,10 @@ export default function Forecast() {
 			<div className="flex items-center justify-center py-8">
 				<div className="glass p-4 flex flex-col gap-1 justify-center items-center rounded-2xl">
 					<BiError className="text-5xl" />
-					<p className="text-sm">Hmm... we couldn’t find that city. </p>
-					<p className="text-sm">
-						Double-check the spelling or try a nearby location.
-					</p>
+					<p
+						className="text-sm text-center"
+						dangerouslySetInnerHTML={{ __html: error.message }}
+					></p>
 				</div>
 			</div>
 		);

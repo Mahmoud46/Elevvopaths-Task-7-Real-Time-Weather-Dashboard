@@ -7,7 +7,7 @@ export default function Home(): ReactNode {
 	const { cities } = useContext(Context) as IContext;
 	return (
 		<>
-			<div className="glass h-[80dvh] rounded-2xl p-8 flex flex-col items-center justify-center gap-3">
+			<div className="glass h-[85dvh] rounded-2xl p-8 flex flex-col items-center justify-center gap-3">
 				<h1 className="text-3xl">Hello, Sunshine!</h1>
 				<p className="text-center max-w-[700px]">
 					Your weather, served fresh and friendly — see today’s forecast, plan
