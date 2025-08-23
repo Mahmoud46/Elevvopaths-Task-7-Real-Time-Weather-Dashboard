@@ -6,7 +6,9 @@ import type { IContext } from "../interfaces/Context.interface";
 import hsLogo from "../assets/hs_logo.png";
 
 export default function Header(): ReactNode {
-	const { cities, setShowCitiesMenu } = useContext(Context) as IContext;
+	const { cities, setShowCitiesMenu, cityFetchError } = useContext(
+		Context
+	) as IContext;
 	const [searchKeyWord, setSearchKeyWord] = useState<string>("");
 	const navigate = useNavigate();
 
@@ -31,7 +33,7 @@ export default function Header(): ReactNode {
 								to={`/${city}`}
 								key={i}
 								className={`${
-									i == 0 && location.pathname != "/"
+									i == 0 && !cityFetchError && location.pathname != "/"
 										? "glass py-1 px-3 rounded-full overflow-hidden"
 										: ""
 								} `}

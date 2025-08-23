@@ -16,4 +16,6 @@ export interface IContext {
 	>;
 	showCitiesMenu: boolean;
 	setShowCitiesMenu: React.Dispatch<React.SetStateAction<boolean>>;
+	cityFetchError: boolean;
+	setCityFetchError: React.Dispatch<React.SetStateAction<boolean>>;
 }

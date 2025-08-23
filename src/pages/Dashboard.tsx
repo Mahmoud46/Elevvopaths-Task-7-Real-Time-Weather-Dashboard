@@ -12,7 +12,9 @@ import { BiError } from "react-icons/bi";
 
 export default function Dashboard(): ReactNode {
 	const { city } = useParams();
-	const { setCities, setWeatherData } = useContext(Context) as IContext;
+	const { setCities, setWeatherData, setCityFetchError } = useContext(
+		Context
+	) as IContext;
 
 	const { data, isLoading, isError, error } = useQuery({
 		queryKey: ["city", city],
@@ -22,12 +24,13 @@ export default function Dashboard(): ReactNode {
 
 	useEffect(() => {
 		if (city && data) {
+			setCityFetchError(false);
 			setWeatherData(data);
 			setCities((prev) => [
 				...new Set([data?.location.name.toLowerCase(), ...prev]),
 			]);
 		}
-	}, [city, data, setCities, setWeatherData]);
+	}, [city, data, setCities, setWeatherData, setCityFetchError]);
 
 	if (isLoading)
 		return (
@@ -35,7 +38,8 @@ export default function Dashboard(): ReactNode {
 				<img src={loadingIcon} className="size-[70px]" />
 			</div>
 		);
-	if (isError)
+	if (isError) {
+		setCityFetchError(true);
 		return (
 			<div className="absolute top-[50%] left-[50%] translate-[-50%] glass p-4 flex flex-col gap-1 justify-center items-center rounded-2xl">
 				<BiError className="text-5xl" />
@@ -45,6 +49,7 @@ export default function Dashboard(): ReactNode {
 				></p>
 			</div>
 		);
+	}
 
 	return (
 		<>

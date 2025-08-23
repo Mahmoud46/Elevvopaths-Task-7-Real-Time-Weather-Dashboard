@@ -16,9 +16,9 @@ export default function Current(): ReactNode {
 	return (
 		<>
 			{weatherData && (
-				<div className="flex glass p-4 rounded-2xl gap-4 flex-1 sm:aspect-[16/9] flex-col sm:flex-row ">
+				<div className="flex glass p-4 rounded-2xl gap-4 flex-1 lg:aspect-[16/9] flex-col lg:flex-row ">
 					{/* Left */}
-					<div className="flex flex-col items-center justify-between sm:items-start sm:flex-1">
+					<div className="flex flex-col items-center justify-between lg:items-start lg:flex-1">
 						<div className="flex glass rounded-full items-center gap-2 py-1 px-2 w-fit text-sm">
 							<GoLocation />
 							<p>
@@ -27,13 +27,13 @@ export default function Current(): ReactNode {
 							</p>
 						</div>
 
-						<div className="flex flex-col items-center gap-4 sm:gap-0 sm:items-start">
-							<p className="text-2xl sm:text-lg">
+						<div className="flex flex-col items-center gap-4 lg:gap-0 lg:items-start">
+							<p className="text-center mt-2 text-2xl lg:text-lg lg:text-left lg:mt-0">
 								{new Date(
 									(weatherData?.location.localtime_epoch * 1000) as number
 								).toLocaleDateString("en-US", { weekday: "long" })}
 							</p>
-							<div className="flex sm:hidden">
+							<div className="flex lg:hidden">
 								<WeatherIcon
 									description={weatherData?.current.condition.text}
 									time={weatherData?.location.localtime}
@@ -42,7 +42,7 @@ export default function Current(): ReactNode {
 									className="text-[150px]"
 								/>
 							</div>
-							<h1 className="text-3xl">
+							<h1 className="text-4xl">
 								{weatherData?.current.condition.text ?? "weather unavailable"}
 							</h1>
 							<p className="font-cabinet text-sm">
@@ -64,9 +64,9 @@ export default function Current(): ReactNode {
 							</p>
 						</div>
 
-						<div className="">
+						<div className="flex flex-col gap-2">
 							<p
-								className="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-cabinet cursor-pointer"
+								className="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-cabinet cursor-pointer mt-2 lg:mt-0"
 								onClick={toggleUnit}
 							>
 								{tempUnit == "C"
@@ -98,7 +98,7 @@ export default function Current(): ReactNode {
 						</div>
 					</div>
 					{/* Right */}
-					<div className="flex flex-col sm:flex-1">
+					<div className="flex flex-col lg:flex-1">
 						<div className="flex justify-center">
 							<div className="flex items-center gap-2 p-2 ">
 								<WiSunrise size={30} className="text-orange-300" />
@@ -121,7 +121,7 @@ export default function Current(): ReactNode {
 								</div>
 							</div>
 						</div>
-						<div className="hidden sm:flex justify-center">
+						<div className="hidden lg:flex justify-center">
 							<WeatherIcon
 								description={weatherData?.current.condition.text}
 								time={weatherData?.location.localtime}
