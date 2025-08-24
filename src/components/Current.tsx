@@ -27,11 +27,28 @@ export default function Current(): ReactNode {
 							</p>
 						</div>
 
-						<div className="flex flex-col items-center gap-4 lg:gap-0 lg:items-start">
+						<div className="flex flex-col items-center gap-2 lg:gap-0 lg:items-start">
 							<p className="text-center mt-2 text-2xl lg:text-lg lg:text-left lg:mt-0">
 								{new Date(
 									(weatherData?.location.localtime_epoch * 1000) as number
 								).toLocaleDateString("en-US", { weekday: "long" })}
+							</p>
+							<p className="font-cabinet text-sm sm:hidden flex">
+								{new Date(
+									weatherData?.location.localtime as string
+								).toLocaleTimeString("en-US", {
+									hour: "numeric",
+									minute: "numeric",
+									hour12: true,
+								})}{" "}
+								&bull;{" "}
+								{new Date(
+									weatherData?.location.localtime as string
+								).toLocaleDateString("en-US", {
+									day: "2-digit",
+									month: "long",
+									year: "numeric",
+								})}
 							</p>
 							<div className="flex lg:hidden">
 								<WeatherIcon
@@ -45,7 +62,7 @@ export default function Current(): ReactNode {
 							<h1 className="text-4xl">
 								{weatherData?.current.condition.text ?? "weather unavailable"}
 							</h1>
-							<p className="font-cabinet text-sm">
+							<p className="font-cabinet text-sm sm:flex hidden">
 								{new Date(
 									weatherData?.location.localtime as string
 								).toLocaleTimeString("en-US", {
