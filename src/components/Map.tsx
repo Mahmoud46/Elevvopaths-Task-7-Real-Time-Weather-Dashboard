@@ -22,9 +22,21 @@ export default function MapFrame(): ReactNode {
 					></iframe>
 					<div className="sm:absolute sm:bottom-0 sm:w-[90%] p-2 text-sm sm:rounded-tr-2xl glass-mod sm:text-black flex gap-2">
 						<div className="text-xl">
-							{getRecommendationIcon(weatherData.current.temp_c)}
+							{getRecommendationIcon(
+								weatherData.current.temp_c,
+								weatherData.current.condition.text,
+								weatherData.current.humidity,
+								weatherData.current.wind_kph,
+								weatherData.current.uv
+							)}
 						</div>
-						{getWeatherRecommendation(weatherData.current.temp_c)}
+						{getWeatherRecommendation(
+							weatherData.current.temp_c,
+							weatherData.current.condition.text,
+							weatherData.current.humidity,
+							weatherData.current.wind_kph,
+							weatherData.current.uv
+						)}
 					</div>
 				</div>
 			)}
