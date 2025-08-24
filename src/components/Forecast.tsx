@@ -47,7 +47,7 @@ export default function Forecast() {
 	return (
 		<>
 			{forecastData && (
-				<div className="flex w-full overflow-auto glass p-4 rounded-4xl gap-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+				<div className="flex w-full overflow-auto glass p-2 sm:p-4 rounded-4xl gap-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
 					{forecastData.list?.map((hr, i) => (
 						<div
 							key={i}
