@@ -115,7 +115,7 @@ export default function Current(): ReactNode {
 						</div>
 					</div>
 					{/* Right */}
-					<div className="flex flex-col lg:flex-1">
+					<div className="flex flex-col xl:flex-1">
 						<div className="flex justify-center">
 							<div className="flex items-center gap-2 p-2 ">
 								<WiSunrise size={30} className="text-orange-300" />
@@ -144,7 +144,7 @@ export default function Current(): ReactNode {
 								time={weatherData?.location.localtime}
 								sunrise={weatherData?.forecast.forecastday[0].astro.sunrise}
 								sunset={weatherData?.forecast.forecastday[0].astro.sunset}
-								className="text-[150px]"
+								className="text-[120px] xl:text-[150px]"
 							/>
 						</div>
 
