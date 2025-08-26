@@ -16,7 +16,7 @@ export default function Current(): ReactNode {
 	return (
 		<>
 			{weatherData && (
-				<div className="flex glass p-4 rounded-2xl gap-4 flex-1 lg:aspect-[16/9] flex-col lg:flex-row portrait-container">
+				<div className="flex glass p-4 rounded-2xl gap-4 flex-1 lg:aspect-[16/8] flex-col lg:flex-row portrait-container">
 					{/* Left */}
 					<div className="flex flex-col items-center justify-between lg:items-start lg:flex-1">
 						<div className="flex glass rounded-full items-center gap-2 py-1 px-2 w-fit text-sm">
@@ -120,8 +120,8 @@ export default function Current(): ReactNode {
 							<div className="flex items-center gap-2 p-2 ">
 								<WiSunrise size={30} className="text-orange-300" />
 								<div>
-									<p className="text-sm opacity-70">Sunrise</p>
-									<p className="font-medium">
+									<p className="text-xs xl:text-sm opacity-70">Sunrise</p>
+									<p className="text-sm xl:text-lg font-medium">
 										{weatherData?.forecast.forecastday[0].astro.sunrise ??
 											"__:__ __"}
 									</p>
@@ -130,8 +130,8 @@ export default function Current(): ReactNode {
 							<div className="flex items-center gap-2 p-2 ">
 								<WiSunset size={30} className="text-red-500" />
 								<div>
-									<p className="text-sm opacity-70">Sunset</p>
-									<p className="font-medium">
+									<p className="text-xs xl:text-sm opacity-70">Sunset</p>
+									<p className="text-sm xl:text-lg font-medium">
 										{weatherData?.forecast.forecastday[0].astro.sunset ??
 											"__:__ __"}
 									</p>
@@ -144,7 +144,7 @@ export default function Current(): ReactNode {
 								time={weatherData?.location.localtime}
 								sunrise={weatherData?.forecast.forecastday[0].astro.sunrise}
 								sunset={weatherData?.forecast.forecastday[0].astro.sunset}
-								className="text-[120px] xl:text-[150px]"
+								className="text-[110px] xl:text-[150px]"
 							/>
 						</div>
 
@@ -152,8 +152,8 @@ export default function Current(): ReactNode {
 							<div className="flex items-center gap-2 p-4 ">
 								<LuDroplets size={20} className="text-blue-400" />
 								<div>
-									<p className="text-sm opacity-70">Humidity</p>
-									<p className="font-medium">
+									<p className="text-xs xl:text-sm opacity-70">Humidity</p>
+									<p className="text-sm xl:text-lg font-medium">
 										{weatherData?.current.humidity ?? "__"}
 									</p>
 								</div>
@@ -161,8 +161,8 @@ export default function Current(): ReactNode {
 							<div className="flex items-center gap-2 p-4 ">
 								<LuWind size={20} className="text-gray-400" />
 								<div>
-									<p className="text-sm opacity-70">Wind</p>
-									<p className="font-medium">
+									<p className="text-xs xl:text-sm opacity-70">Wind</p>
+									<p className="text-sm xl:text-lg font-medium">
 										{weatherData?.current.wind_kph ?? "__"}
 									</p>
 								</div>

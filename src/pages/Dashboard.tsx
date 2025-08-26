@@ -9,12 +9,21 @@ import Forecast from "../components/Forecast";
 import MapFrame from "../components/Map";
 import Current from "../components/Current";
 import { BiError } from "react-icons/bi";
+import { getPastHours, getWeatherTrendToday } from "../utils/Analytics";
+import Analytics from "../components/Analytics";
+import WeatherRecommendation from "../components/WeatherRecommendation";
+import GraphContainer from "../components/GraphContainer";
+import HourlyForecast from "../components/HourlyForecast";
 
 export default function Dashboard(): ReactNode {
 	const { city } = useParams();
-	const { setCities, setWeatherData, setCityFetchError } = useContext(
-		Context
-	) as IContext;
+	const {
+		setCities,
+		setWeatherData,
+		setCityFetchError,
+		setHourlyWeather,
+		setWeatherTrend,
+	} = useContext(Context) as IContext;
 
 	const { data, isLoading, isError, error } = useQuery({
 		queryKey: ["city", city],
@@ -29,8 +38,18 @@ export default function Dashboard(): ReactNode {
 			setCities((prev) => [
 				...new Set([data?.location.name.toLowerCase(), ...prev]),
 			]);
+			setHourlyWeather(getPastHours(data, 10));
+			setWeatherTrend(getWeatherTrendToday(data, 10));
 		}
-	}, [city, data, setCities, setWeatherData, setCityFetchError]);
+	}, [
+		city,
+		data,
+		setCities,
+		setWeatherData,
+		setCityFetchError,
+		setHourlyWeather,
+		setWeatherTrend,
+	]);
 
 	if (isLoading)
 		return (
@@ -53,15 +72,40 @@ export default function Dashboard(): ReactNode {
 
 	return (
 		<>
-			<div className="flex w-full gap-4 flex-wrap">
-				<Current />
+			<div className="sticky top-[-20dvh] sm:top-0 flex flex-col gap-4">
+				<div className="flex w-full gap-4 flex-wrap">
+					<Current />
+
+					{/*  */}
+					<MapFrame className="hidden sm:flex-1 sm:flex sm:aspect-[16/8]" />
+				</div>
 
 				{/*  */}
-				<MapFrame />
+				<Forecast />
 			</div>
+			{
+				<div className="glass-mod flex flex-wrap w-full rounded-2xl p-4 gap-4">
+					<MapFrame className="flex flex-1 aspect-[16/8] sm:hidden" />
+					<div className="flex-1 flex flex-col gap-2 w-full sm:w-[350px]">
+						<div className="relative min-w-[300px] aspect-[16/9] sm:aspect-[16/8] glass-mod rounded-2xl overflow-hidden">
+							<GraphContainer graphStatus="past" />
+						</div>
+						<HourlyForecast forecastStatus="past" />
+					</div>
 
-			{/*  */}
-			<Forecast />
+					<div className="flex-1 flex flex-col gap-2 w-full sm:w-[350px]">
+						<div className="relative min-w-[300px] aspect-[16/9] sm:aspect-[16/8] glass-mod rounded-2xl overflow-hidden">
+							<GraphContainer graphStatus="next" />
+						</div>
+						<HourlyForecast forecastStatus="next" />
+					</div>
+
+					<div className="flex flex-col gap-2 w-full sm:w-[350px]">
+						<Analytics />
+						<WeatherRecommendation />
+					</div>
+				</div>
+			}
 		</>
 	);
 }

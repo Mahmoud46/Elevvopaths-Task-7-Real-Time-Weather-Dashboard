@@ -51,7 +51,13 @@ export default function Forecast() {
 					{forecastData.list?.map((hr, i) => (
 						<div
 							key={i}
-							className="glass p-2 rounded-3xl overflow-hidden flex-none justify-center text-center w-[80px]"
+							className={`${
+								hr.dt_txt.includes(
+									weatherData?.location.localtime.split(" ")[0] as string
+								)
+									? "glass-mod"
+									: "glass"
+							} p-2 rounded-3xl overflow-hidden flex-none justify-center text-center w-[80px]`}
 						>
 							<h1 className="">
 								{hr.dt_txt.includes(
@@ -62,7 +68,7 @@ export default function Forecast() {
 											((hr.dt as number) * 1000) as number
 									  ).toLocaleDateString("en-US", { weekday: "short" })}
 							</h1>
-							<p className="text-sm glass rounded-full overflow-hidden opacity-75">
+							<p className="text-xs glass rounded-full overflow-hidden opacity-75">
 								{new Date(
 									((hr.dt as number) * 1000) as number
 								).toLocaleTimeString("en-US", {

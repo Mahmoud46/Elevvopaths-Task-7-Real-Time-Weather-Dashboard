@@ -1,6 +1,7 @@
 import type { OpenWeatherForecast } from "./OpenWeatherMap.interface";
 import type Weather from "./Weather.interface";
 import type { TemperatureUnit } from "./Weather.interface";
+import type { HourInfo } from "./WeatherForecast.interface";
 
 export interface IContext {
 	cities: string[];
@@ -18,4 +19,8 @@ export interface IContext {
 	setShowCitiesMenu: React.Dispatch<React.SetStateAction<boolean>>;
 	cityFetchError: boolean;
 	setCityFetchError: React.Dispatch<React.SetStateAction<boolean>>;
+	setWeatherTrend: React.Dispatch<React.SetStateAction<HourInfo[]>>;
+	setHourlyWeather: React.Dispatch<React.SetStateAction<HourInfo[]>>;
+	weatherTrend: HourInfo[];
+	hourlyWeather: HourInfo[];
 }
