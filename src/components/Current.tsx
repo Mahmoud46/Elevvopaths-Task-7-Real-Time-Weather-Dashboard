@@ -164,6 +164,7 @@ export default function Current(): ReactNode {
 									<p className="text-xs xl:text-sm opacity-70">Wind</p>
 									<p className="text-sm xl:text-lg font-medium">
 										{weatherData?.current.wind_kph ?? "__"}
+										<span className="text-xs font-normal">km/h</span>
 									</p>
 								</div>
 							</div>

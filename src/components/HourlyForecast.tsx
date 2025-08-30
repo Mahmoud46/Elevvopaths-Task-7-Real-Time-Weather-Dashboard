@@ -35,6 +35,10 @@ export default function HourlyForecast({
 								{tempUnit == "C" ? hour.temp_c ?? "__" : hour.temp_f ?? "__"}
 								<span>&deg;{tempUnit}</span>
 							</div>
+							<p className="text-xs text-center">
+								{hour.wind_kph.toFixed(0)}
+								<span>km/h</span>
+							</p>
 						</div>
 					))}
 				</div>
@@ -60,6 +64,10 @@ export default function HourlyForecast({
 								{tempUnit == "C" ? hour.temp_c ?? "__" : hour.temp_f ?? "__"}
 								<span>&deg;{tempUnit}</span>
 							</div>
+							<p className="text-xs text-center">
+								{hour.wind_kph.toFixed(0)}
+								<span>km/h</span>
+							</p>
 						</div>
 					))}
 				</div>
