@@ -84,7 +84,7 @@ export default function Dashboard(): ReactNode {
 				<Forecast />
 			</div>
 			{
-				<div className="glass-mod flex flex-wrap w-full rounded-2xl p-4 gap-4">
+				<div className="glass-mod flex flex-wrap w-full rounded-2xl p-2 sm:p-4 gap-4">
 					<MapFrame className="flex flex-1 aspect-[16/8] sm:hidden" />
 					<div className="flex-1 flex flex-col gap-2 w-full sm:w-[350px]">
 						<div className="relative min-w-[300px] aspect-[16/9] sm:aspect-[16/8] glass-mod rounded-2xl overflow-hidden">
