@@ -2,6 +2,7 @@ import { useContext, type ReactNode } from "react";
 import { Context } from "../context/Context";
 import type { IContext } from "../interfaces/Context.interface";
 import { WeatherIcon } from "../utils/WeatherIcon";
+import { LuDroplets } from "react-icons/lu";
 
 export default function HourlyForecast({
 	forecastStatus,
@@ -35,10 +36,11 @@ export default function HourlyForecast({
 								{tempUnit == "C" ? hour.temp_c ?? "__" : hour.temp_f ?? "__"}
 								<span>&deg;{tempUnit}</span>
 							</div>
-							<p className="text-xs text-center">
-								{hour.wind_kph.toFixed(0)}
-								<span>km/h</span>
-							</p>
+							<div className="flex items-center justify-center gap-0.5 text-xs text-center">
+								<LuDroplets />
+								{hour.humidity.toFixed(0)}
+								<span>%</span>
+							</div>
 						</div>
 					))}
 				</div>
@@ -64,10 +66,11 @@ export default function HourlyForecast({
 								{tempUnit == "C" ? hour.temp_c ?? "__" : hour.temp_f ?? "__"}
 								<span>&deg;{tempUnit}</span>
 							</div>
-							<p className="text-xs text-center">
-								{hour.wind_kph.toFixed(0)}
-								<span>km/h</span>
-							</p>
+							<div className="flex items-center justify-center gap-0.5 text-xs text-center">
+								<LuDroplets />
+								{hour.humidity.toFixed(0)}
+								<span>%</span>
+							</div>
 						</div>
 					))}
 				</div>

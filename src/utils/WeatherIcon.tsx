@@ -12,6 +12,7 @@ import {
 	WiFog,
 } from "react-icons/wi";
 import { parseDateTime, parseTimeForDate } from "./Parse";
+import { FaArrowUp } from "react-icons/fa";
 
 type WeatherIconProps = {
 	description: string;
@@ -111,4 +112,26 @@ export function WeatherIcon({
 
 	// ---- FALLBACK ----
 	return <WiCloud className={className} />;
+}
+
+export function WindArrow({
+	speed,
+	angle,
+}: {
+	speed: number;
+	angle: number;
+}): ReactNode {
+	return (
+		<>
+			<FaArrowUp
+				style={{
+					fontSize: `${Math.max(20, speed * 2) - 8}px`, // scale arrow size, min 20px
+					color: "#fff",
+					transform: `rotate(${angle}deg)`,
+					transition: "transform 0.3s ease",
+					fontWeight: "normal",
+				}}
+			/>
+		</>
+	);
 }
