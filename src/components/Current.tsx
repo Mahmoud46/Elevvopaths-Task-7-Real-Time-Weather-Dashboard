@@ -16,7 +16,7 @@ export default function Current(): ReactNode {
 	return (
 		<>
 			{weatherData && (
-				<div className="flex glass p-4 rounded-2xl gap-4 flex-1 lg:aspect-[16/8] flex-col lg:flex-row portrait-container">
+				<div className="flex glass p-4 rounded-2xl gap-4 flex-1 lg:aspect-[16/8] flex-col lg:flex-row">
 					{/* Left */}
 					<div className="flex flex-col items-center justify-between lg:items-start lg:flex-1">
 						<div className="flex glass rounded-full items-center gap-2 py-1 px-2 w-fit text-sm">

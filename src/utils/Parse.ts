@@ -21,3 +21,21 @@ export function parseTimeForDate(baseDate: Date, timeStr: string): Date {
 	d.setHours(hours, minutes, 0, 0);
 	return d;
 }
+
+export function latLonToTile(
+	lat: number,
+	lon: number,
+	zoom: number
+): { x: number; y: number } {
+	const x = Math.floor(((lon + 180) / 360) * Math.pow(2, zoom));
+	const y = Math.floor(
+		((1 -
+			Math.log(
+				Math.tan((lat * Math.PI) / 180) + 1 / Math.cos((lat * Math.PI) / 180)
+			) /
+				Math.PI) /
+			2) *
+			Math.pow(2, zoom)
+	);
+	return { x, y };
+}

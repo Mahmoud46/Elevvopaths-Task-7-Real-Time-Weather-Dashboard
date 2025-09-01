@@ -12,13 +12,13 @@ export default function GraphContainer({
 	return (
 		<>
 			{graphStatus == "past" && hourlyWeather && hourlyWeather.length > 0 && (
-				<div className="relative min-w-[300px] aspect-[16/9] sm:aspect-[16/8] glass-mod rounded-2xl overflow-hidden">
+				<div className="relative aspect-[16/9] sm:aspect-[16/8] w-full glass-mod rounded-2xl overflow-hidden">
 					<Graph weatherData={hourlyWeather} graphStatus="past" />
 				</div>
 			)}
 
 			{graphStatus == "next" && hourlyWeather && weatherTrend.length > 0 && (
-				<div className="relative min-w-[300px] aspect-[16/9] sm:aspect-[16/8] glass-mod rounded-2xl overflow-hidden">
+				<div className="relative  aspect-[16/9] w-full sm:aspect-[16/8] glass-mod rounded-2xl overflow-hidden">
 					<Graph weatherData={weatherTrend} graphStatus="next" />
 				</div>
 			)}

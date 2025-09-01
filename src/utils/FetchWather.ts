@@ -1,6 +1,7 @@
 import { BASE_URL, API_Key, OPEN_API_Key } from "../constants/APIConstants";
 import type { OpenWeatherForecast } from "../interfaces/OpenWeatherMap.interface";
 import type Weather from "../interfaces/Weather.interface";
+import { latLonToTile } from "./Parse";
 
 const statusMessages: Record<number, string> = {
 	400: "Hmm... we couldn’t find that city. <br/> Double-check the spelling or try a nearby location.",
@@ -28,6 +29,20 @@ export const fetchWeatheForecast = async (
 ): Promise<OpenWeatherForecast> => {
 	const response = await fetch(
 		`https://api.openweathermap.org/data/2.5/forecast?q=${query}&appid=${OPEN_API_Key}&units=metric`
+	);
+	if (!response.ok) throw new Error(statusMessages[response.status]);
+	return response.json();
+};
+
+export const fetchWeatherMap = async (
+	lat: number,
+	lon: number,
+	zoom: number,
+	layer = "temp_new"
+) => {
+	const position = latLonToTile(lat, lon, zoom);
+	const response = await fetch(
+		`https://tile.openweathermap.org/map/${layer}/${zoom}/${position.x}/${position.y}.png?appid=${OPEN_API_Key}`
 	);
 	if (!response.ok) throw new Error(statusMessages[response.status]);
 	return response.json();

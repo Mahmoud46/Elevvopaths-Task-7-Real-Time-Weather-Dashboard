@@ -15,6 +15,7 @@ import WeatherRecommendation from "../components/WeatherRecommendation";
 import GraphContainer from "../components/GraphContainer";
 import HourlyForecast from "../components/HourlyForecast";
 import WindTrends from "../components/WindTrends";
+import PrecipitationChart from "../components/PrecipitationChart";
 
 export default function Dashboard(): ReactNode {
 	const { city } = useParams();
@@ -87,12 +88,12 @@ export default function Dashboard(): ReactNode {
 			{
 				<div className="glass-mod flex flex-wrap w-full rounded-2xl p-2 sm:p-4 gap-4">
 					<MapFrame className="flex flex-1 aspect-[16/8] sm:hidden" />
-					<div className="flex-1 flex flex-col gap-2 w-full sm:w-[350px]">
+					<div className="flex-1 flex flex-col gap-2 w-full sm:w-[300px]">
 						<GraphContainer graphStatus="past" />
 						<HourlyForecast forecastStatus="past" />
 					</div>
 
-					<div className="flex-1 flex flex-col gap-2 w-full sm:w-[350px]">
+					<div className="flex-1 flex flex-col gap-2 w-full sm:w-[300px]">
 						<GraphContainer graphStatus="next" />
 						<HourlyForecast forecastStatus="next" />
 					</div>
@@ -102,6 +103,9 @@ export default function Dashboard(): ReactNode {
 						<WeatherRecommendation />
 					</div>
 					<WindTrends />
+					<div className="relative aspect-[16/6] sm:aspect-[16/4] md:aspect-[16/3] lg:aspect-[16/2] w-full glass-mod rounded-2xl overflow-hidden">
+						<PrecipitationChart />
+					</div>
 				</div>
 			}
 		</>
