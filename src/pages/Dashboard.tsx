@@ -16,6 +16,7 @@ import GraphContainer from "../components/GraphContainer";
 import HourlyForecast from "../components/HourlyForecast";
 import WindTrends from "../components/WindTrends";
 import PrecipitationChart from "../components/PrecipitationChart";
+import WeatherMap from "../components/WeatherMap";
 
 export default function Dashboard(): ReactNode {
 	const { city } = useParams();
@@ -105,6 +106,16 @@ export default function Dashboard(): ReactNode {
 					<WindTrends />
 					<div className="relative aspect-[16/6] sm:aspect-[16/4] md:aspect-[16/3] lg:aspect-[16/2] w-full glass-mod rounded-2xl overflow-hidden">
 						<PrecipitationChart />
+					</div>
+					<div className="flex flex-col">
+						<h1 className="font-semibold text-2xl py-2">Weather Maps</h1>
+						<div className="flex flex-wrap gap-2">
+							<WeatherMap mapCategory="Temperature" />
+							<WeatherMap mapCategory="Wind" />
+							<WeatherMap mapCategory="Clouds" />
+							<WeatherMap mapCategory="Pressure" />
+							<WeatherMap mapCategory="Precipitation" />
+						</div>
 					</div>
 				</div>
 			}
