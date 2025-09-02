@@ -27,7 +27,7 @@ export default function WeatherMap({
 
 	return (
 		<>
-			<div className="flex-1 min-w-[200px] max-w-[300px] glass-mod p-2 rounded-2xl overflow-hidden">
+			<div className="flex-1 min-w-[300px] max-w-[400px] sm:min-w-[200px] sm:max-w-[300px] glass-mod p-2 rounded-2xl overflow-hidden">
 				<h2 className="text-base font-semibold mb-2">{mapCategory} Map</h2>
 				<div className="relative w-full aspect-[16/8] sm:aspect-[16/16] rounded-2xl overflow-hidden">
 					<iframe
