@@ -39,3 +39,11 @@ export function latLonToTile(
 	);
 	return { x, y };
 }
+
+export function UVIndextoRiskCondition(uvIndex: number) {
+	if (uvIndex <= 2) return "Low";
+	else if (uvIndex <= 5) return "Moderate";
+	else if (uvIndex <= 7) return "High";
+	else if (uvIndex <= 10) return "Very high";
+	return "Extreme";
+}

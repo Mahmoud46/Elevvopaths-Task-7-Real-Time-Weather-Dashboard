@@ -10,6 +10,7 @@ import type { ChangeTrend } from "../interfaces/Weather.interface";
 import { BiTrendingDown, BiTrendingUp } from "react-icons/bi";
 import { BsActivity } from "react-icons/bs";
 import { LuSun, LuThermometer, LuUmbrella } from "react-icons/lu";
+import { UVIndextoRiskCondition } from "../utils/Parse";
 
 export default function Analytics(): ReactNode {
 	const { weatherData, hourlyWeather, weatherTrend, tempUnit } = useContext(
@@ -74,11 +75,7 @@ export default function Analytics(): ReactNode {
 							<div>
 								<p className="opacity-70 text-xs">UV Index</p>
 								<p className="font-medium">
-									{weatherData?.current.condition.text
-										.toLowerCase()
-										.includes("cloud")
-										? "Low"
-										: "Moderate"}
+									{UVIndextoRiskCondition(weatherData.current.uv)}
 								</p>
 							</div>
 						</div>

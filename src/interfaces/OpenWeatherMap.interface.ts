@@ -66,3 +66,10 @@ export interface Coordinates {
 	lat: number;
 	lon: number;
 }
+
+export type IWeatherMapLayer =
+	| "wind_new"
+	| "clouds_new"
+	| "precipitation_new"
+	| "pressure_new"
+	| "temp_new";
