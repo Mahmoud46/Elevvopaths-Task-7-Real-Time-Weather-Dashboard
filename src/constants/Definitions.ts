@@ -16,6 +16,7 @@ export const weatherDefinitions: {
 	definition: string;
 	meaning: string;
 	icon: IconType;
+	color: string;
 }[] = [
 	{
 		title: "Wind Gust Speed",
@@ -24,6 +25,7 @@ export const weatherDefinitions: {
 		meaning:
 			"Indicates sudden, brief increases in wind that can affect comfort, safety, and outdoor activities.",
 		icon: WiCloudyGusts,
+		color: "text-sky-500", // airy, wind/sky
 	},
 	{
 		title: "Dew Point",
@@ -32,6 +34,7 @@ export const weatherDefinitions: {
 		meaning:
 			"A higher dew point means the air feels more humid, while a lower dew point means it feels drier.",
 		icon: WiRaindrop,
+		color: "text-cyan-500", // water/moisture
 	},
 	{
 		title: "Visibility",
@@ -40,6 +43,7 @@ export const weatherDefinitions: {
 		meaning:
 			"Reduced visibility (due to fog, rain, or snow) can impact travel safety and outdoor conditions.",
 		icon: WiFog,
+		color: "text-gray-400", // fog/mist
 	},
 	{
 		title: "Wind Chill Temperature",
@@ -48,6 +52,7 @@ export const weatherDefinitions: {
 		meaning:
 			"Strong winds make it feel colder than the thermometer reading, affecting comfort and frostbite risk.",
 		icon: WiSnowflakeCold,
+		color: "text-blue-400", // icy cold
 	},
 ];
 

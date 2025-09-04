@@ -15,43 +15,43 @@ export default function MoreAnalytics() {
 	const { weatherData, tempUnit } = useContext(Context) as IContext;
 	return (
 		<>
-			<div className="flex-1 min-w-[300px]">
-				<div className="flex flex-wrap">
+			<div className="flex-1 flex flex-col min-w-[300px] gap-2">
+				<div className="flex flex-wrap glass p-2 rounded-2xl">
 					<div className="flex items-center gap-2 min-w-[100px] max-w-[200px] p-2">
-						<WiCloud className="text-3xl" />
+						<WiCloud className="text-3xl text-slate-400" />
 						<div className="">
-							<p className="text-xs text-gray-200">Cloud</p>
-							<p>
+							<p className="text-xs opacity-70">Cloud</p>
+							<p className="font-medium">
 								{weatherData?.current.cloud}
 								<span className="text-sm">%</span>
 							</p>
 						</div>
 					</div>
 					<div className="flex items-center gap-2 min-w-[100px] max-w-[200px] p-2">
-						<WiBarometer className="text-3xl" />
+						<WiBarometer className="text-3xl text-indigo-500" />
 						<div className="">
-							<p className="text-xs text-gray-200">Pressure</p>
-							<p>
+							<p className="text-xs opacity-70">Pressure</p>
+							<p className="font-medium">
 								{weatherData?.current.pressure_mb}
 								<span className="text-sm">mb</span>
 							</p>
 						</div>
 					</div>
 					<div className="flex items-center gap-2 min-w-[100px] max-w-[200px] p-2">
-						<WiCloudyGusts className="text-3xl" />
+						<WiCloudyGusts className="text-3xl text-sky-500" />
 						<div className="">
-							<p className="text-xs text-gray-200">Wind gust speed</p>
-							<p>
+							<p className="text-xs opacity-70">Wind gust speed</p>
+							<p className="font-medium">
 								{weatherData?.current.gust_kph}
 								<span className="text-sm">km/h</span>
 							</p>
 						</div>
 					</div>
 					<div className="flex items-center gap-2 min-w-[100px] max-w-[200px] p-2">
-						<WiRaindrop className="text-3xl" />
+						<WiRaindrop className="text-3xl text-cyan-500" />
 						<div className="">
-							<p className="text-xs text-gray-200">Dew Point</p>
-							<p>
+							<p className="text-xs opacity-70">Dew Point</p>
+							<p className="font-medium">
 								{tempUnit == "C"
 									? weatherData?.current.dewpoint_c
 									: weatherData?.current.dewpoint_f}
@@ -60,20 +60,20 @@ export default function MoreAnalytics() {
 						</div>
 					</div>
 					<div className="flex items-center gap-2 min-w-[100px] max-w-[200px] p-2">
-						<WiFog className="text-3xl" />
+						<WiFog className="text-3xl text-gray-400" />
 						<div className="">
-							<p className="text-xs text-gray-200">Visibility</p>
-							<p>
+							<p className="text-xs opacity-70">Visibility</p>
+							<p className="font-medium">
 								{weatherData?.current.vis_km}
 								<span className="text-sm">km</span>
 							</p>
 						</div>
 					</div>
 					<div className="flex items-center gap-2 min-w-[100px] max-w-[200px] p-2">
-						<WiSnowflakeCold className="text-3xl" />
+						<WiSnowflakeCold className="text-3xl text-blue-400" />
 						<div className="">
-							<p className="text-xs text-gray-200">Wind Chill Temperature</p>
-							<p>
+							<p className="text-xs opacity-70">Wind Chill Temperature</p>
+							<p className="font-medium">
 								{tempUnit == "C"
 									? weatherData?.current.windchill_c
 									: weatherData?.current.windchill_f}
@@ -83,21 +83,22 @@ export default function MoreAnalytics() {
 						</div>
 					</div>
 				</div>
-				<hr className="border border-gray-500 my-2 " />
-				<h1 className="font-semibold my-2 text-xl">Definitions</h1>
-				<div className="flex flex-col gap-2">
-					{weatherDefinitions.map((def, i) => (
-						<div key={i} className="flex gap-4">
-							<def.icon className="text-2xl flex-none" />
-							<div className="">
-								<h2 className="font-semibold">{def.title}</h2>
-								<ul className="text-gray-200">
+				<div className="flex flex-col glass p-2 gap-2 rounded-2xl overflow-hidden">
+					<h1 className="font-semibold text-xl">Definitions</h1>
+					<div className="flex flex-col gap-2">
+						{weatherDefinitions.map((def, i) => (
+							<div key={i} className="flex flex-col gap-1">
+								<div className="flex items-center gap-2">
+									<def.icon className={`text-3xl flex-none ${def.color}`} />
+									<h2 className="font-semibold">{def.title}</h2>
+								</div>
+								<ul className="text-gray-200 pl-14">
 									<li className="text-sm list-disc">{def.definition}</li>
 									<li className="text-sm list-disc">{def.meaning}</li>
 								</ul>
 							</div>
-						</div>
-					))}
+						))}
+					</div>
 				</div>
 			</div>
 		</>

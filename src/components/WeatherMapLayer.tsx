@@ -23,7 +23,7 @@ export default function WeatherMapLayer(): ReactNode {
 			{weatherData && (
 				<div className="flex flex-col gap-2 min-w-[300px] w-full sm:max-w-500 sm:w-[400px]">
 					{loading && <div>Loading..</div>}
-					<div className="flex overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+					<div className="flex overflow-auto glass p-1 rounded-full [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
 						{mapActionButtons.map((btn, i) => (
 							<button
 								key={i}

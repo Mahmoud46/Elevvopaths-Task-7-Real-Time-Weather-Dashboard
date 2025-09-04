@@ -34,7 +34,7 @@ export default function Header(): ReactNode {
 								key={i}
 								className={`${
 									i == 0 && !cityFetchError && location.pathname != "/"
-										? "glass py-1 px-3 rounded-full overflow-hidden"
+										? "bg-white text-gray-950 py-1 px-3 rounded-full overflow-hidden"
 										: ""
 								} `}
 							>
