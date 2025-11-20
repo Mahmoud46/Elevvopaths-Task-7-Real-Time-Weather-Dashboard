@@ -3,7 +3,7 @@ import { BiDotsHorizontalRounded, BiSearch } from "react-icons/bi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../context/Context";
 import type { IContext } from "../interfaces/Context.interface";
-import hsLogo from "../assets/hs_logo.png";
+import logo from "../assets/hellosky.svg";
 
 export default function Header(): ReactNode {
 	const { cities, setShowCitiesMenu, cityFetchError } = useContext(
@@ -22,8 +22,8 @@ export default function Header(): ReactNode {
 	return (
 		<header className="fixed top-0 w-full px-2 py-4 sm:px-8 z-20">
 			<div className="flex justify-between items-center glass rounded-full p-2">
-				<Link to="/" className="">
-					<img src={hsLogo} alt="HelloSky" className="h-[30px]" />
+				<Link to="/" className=" px-2">
+					<img src={logo} alt="HelloSky" className="h-[30px]" />
 				</Link>
 
 				<div className="relative flex items-center justify-center gap-4">
