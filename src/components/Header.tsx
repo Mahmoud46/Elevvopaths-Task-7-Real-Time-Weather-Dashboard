@@ -22,8 +22,15 @@ export default function Header(): ReactNode {
 	return (
 		<header className="fixed top-0 w-full px-2 py-4 sm:px-8 z-20">
 			<div className="flex justify-between items-center glass rounded-full p-2">
-				<Link to="/" className=" px-2">
+				<Link
+					to="/"
+					className="px-2 flex gap-3 items-center font-semibold text-xl"
+				>
 					<img src={logo} alt="HelloSky" className="h-[30px]" />
+					<p className="hidden md:flex">
+						<span>Hello</span>
+						<span className="italic">Sky</span>
+					</p>
 				</Link>
 
 				<div className="relative flex items-center justify-center gap-4">
