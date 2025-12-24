@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
+
 @import "tailwindcss";
 
 body {
@@ -33,6 +35,11 @@ body {
 			-webkit-backdrop-filter: blur(10px);
 			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 			color: #fff;
+		}
+
+		.dancing {
+			font-family: "Dancing Script", cursive;
+			font-weight: 700;
 		}
 	}
 }

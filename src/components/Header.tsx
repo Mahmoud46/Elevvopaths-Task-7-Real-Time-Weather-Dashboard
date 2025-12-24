@@ -28,8 +28,8 @@ export default function Header(): ReactNode {
 				>
 					<img src={logo} alt="HelloSky" className="h-[30px]" />
 					<p className="hidden md:flex">
-						<span>Hello</span>
-						<span className="italic">Sky</span>
+						<span className="dancing text-2xl">Hello</span>
+						<span className="">Sky</span>
 					</p>
 				</Link>
 

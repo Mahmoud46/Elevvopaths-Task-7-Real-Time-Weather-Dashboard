@@ -27,12 +27,12 @@ export default function CitiesMenu(): ReactNode {
 		<>
 			{showCitiesMenu && (
 				<div
-					className="fixed glass z-20 top-15 left-[50%] translate-x-[-50%] w-[90%] flex flex-col rounded-xl overflow-x-hidden overflow-y-auto max-h-[300px] sm:w-fit"
+					className="fixed glass z-20 top-15 left-1/2 -translate-x-1/2 w-[90%] flex flex-col rounded-xl overflow-x-hidden overflow-y-auto max-h-[300px] sm:w-fit p-1"
 					ref={menuRef}
 				>
 					{cities.map((city, i) => (
 						<Link
-							className="py-1 px-4 hover:text-black hover:border-y-1 hover:border-y-gray-200 pr-8"
+							className="py-1 px-4 hover:text-black hover:bg-white pr-8 rounded-lg"
 							to={`/${city}`}
 							key={i}
 							onClick={(e) => {
