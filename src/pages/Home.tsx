@@ -8,7 +8,7 @@ export default function Home(): ReactNode {
 	const { cities } = useContext(Context) as IContext;
 	return (
 		<>
-			<div className="glass rounded-2xl p-8 flex flex-col lg:flex-row items-center lg:justify-start justify-center gap-3">
+			<div className="glass rounded-2xl p-8 flex flex-col lg:flex-row items-center lg:justify-start justify-center gap-3 min-h-[90dvh]">
 				<div className="flex flex-col gap-4 items-center lg:items-start">
 					<h1 className="text-3xl text-center lg:text-start lg:text-4xl">
 						Hello, Sunshine!
