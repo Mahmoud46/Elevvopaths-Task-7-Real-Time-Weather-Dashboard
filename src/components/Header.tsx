@@ -27,9 +27,9 @@ export default function Header(): ReactNode {
 					className="px-2 flex gap-3 items-center font-semibold text-xl"
 				>
 					<img src={logo} alt="HelloSky" className="h-[30px]" />
-					<p className="hidden md:flex items-center">
-						<span className="dancing text-2xl">Hello</span>
-						<span className="poppins">Sky</span>
+					<p className="hidden md:flex items-center poppins">
+						<span className="font-light">Hello</span>
+						<span className="">Sky</span>
 					</p>
 				</Link>
 
