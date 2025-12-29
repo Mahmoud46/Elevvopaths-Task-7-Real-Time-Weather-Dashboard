@@ -77,6 +77,11 @@ The application retrieves real-time, forecast, and analytical weather data from 
 
 ---
 
+## Demo
+
+![Demo](hellosky.gif)
+[Demo link](https://elevvopaths-task-7-real-time-weathe.vercel.app/)
+
 ## 📂 Project Structure
 
 ```bash
