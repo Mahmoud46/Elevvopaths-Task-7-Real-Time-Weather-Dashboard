@@ -100,7 +100,14 @@ src/
 └── main.tsx           # Application entry point
 ```
 
-## ⚙️ Installation & Setup
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or later recommended)
+- npm or yarn
+
+### ⚙️ Installation & Setup
 
 1. Clone the repository
 
